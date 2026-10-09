@@ -1,4 +1,4 @@
-# Five Desks — OpenEnv Arena environment (masapasa)
+# Five Desks — OpenEnv Arena environment (HF: masapasa, GitHub: aswinpy)
 
 One OpenEnv image covering the five domains where no arena run has scored yet:
 finance, natural science, math, cybersecurity, media.

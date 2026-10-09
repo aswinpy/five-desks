@@ -1,7 +1,7 @@
 {
   "submission_id": "five-desks-v1",
   "name": "Five Desks: finance, science, math, security, media",
-  "image": "ghcr.io/masapasa/five-desks:v1",
+  "image": "ghcr.io/aswinpy/five-desks:v1",
   "schema": {
     "action": {
       "additionalProperties": false,
@@ -240,5 +240,5 @@
     "answer": "unanswered"
   },
   "dataset": "masapasa/five-desks",
-  "source": "https://github.com/masapasa/five-desks"
+  "source": "https://github.com/aswinpy/five-desks"
 }
