@@ -5,11 +5,13 @@ WORKDIR /app/env
 
 COPY pyproject.toml openenv.yaml ./
 COPY five_desks ./five_desks
-RUN pip install --no-cache-dir "openenv @ git+https://github.com/meta-pytorch/OpenEnv.git@86a180ede21e044f7929b9a7783ad83aa67d83a3" pydantic fastapi "uvicorn[standard]"
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir "openenv @ git+https://github.com/meta-pytorch/OpenEnv.git@86a180ede21e044f7929b9a7783ad83aa67d83a3" pydantic fastapi "uvicorn[standard]"
 
 ENV PYTHONPATH="/app/env" \
-    PYTHONUNBUFFERED=1 \
-    PATH="/app/env/.venv/bin:$PATH"
+    PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
