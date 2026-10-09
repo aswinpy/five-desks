@@ -1,0 +1,244 @@
+{
+  "submission_id": "five-desks-v1",
+  "name": "Five Desks: finance, science, math, security, media",
+  "image": "ghcr.io/masapasa/five-desks:v1",
+  "schema": {
+    "action": {
+      "additionalProperties": false,
+      "description": "Search, read, compute, or answer. Send exactly one field per turn.",
+      "properties": {
+        "metadata": {
+          "additionalProperties": true,
+          "description": "Additional metadata for the action",
+          "title": "Metadata",
+          "type": "object"
+        },
+        "grep": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Return up to 8 workspace lines containing this text (case-insensitive). Empty string returns first 8 lines.",
+          "title": "Grep"
+        },
+        "read": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Read a workspace file by name (e.g. 'ledger.csv'). Returns first 40 lines.",
+          "title": "Read"
+        },
+        "calc": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Evaluate a bounded arithmetic expression (digits, +-*/() and spaces only, max 200 chars).",
+          "title": "Calc"
+        },
+        "answer": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Submit the final answer. Ends the episode.",
+          "title": "Answer"
+        }
+      },
+      "title": "FiveDesksAction",
+      "type": "object"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "description": "What the agent sees after each action.",
+      "properties": {
+        "done": {
+          "default": false,
+          "description": "Whether the episode has terminated",
+          "title": "Done",
+          "type": "boolean"
+        },
+        "reward": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reward signal from the last action",
+          "title": "Reward"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "description": "Additional metadata for the observation",
+          "title": "Metadata",
+          "type": "object"
+        },
+        "task_id": {
+          "default": "",
+          "description": "Task being played",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "domain": {
+          "default": "",
+          "description": "One of finance, science, math, security, media",
+          "title": "Domain",
+          "type": "string"
+        },
+        "question": {
+          "default": "",
+          "description": "The question. Sent once, at reset.",
+          "title": "Question",
+          "type": "string"
+        },
+        "files": {
+          "default": "",
+          "description": "Workspace file names. Sent once, at reset.",
+          "title": "Files",
+          "type": "string"
+        },
+        "output": {
+          "default": "",
+          "description": "Result of the last action",
+          "title": "Output",
+          "type": "string"
+        },
+        "steps_left": {
+          "default": 0,
+          "description": "Actions left before the episode ends",
+          "title": "Steps Left",
+          "type": "integer"
+        }
+      },
+      "title": "FiveDesksObservation",
+      "type": "object"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "finance-00",
+      "split": "train"
+    },
+    {
+      "task_id": "finance-01",
+      "split": "train"
+    },
+    {
+      "task_id": "finance-02",
+      "split": "train"
+    },
+    {
+      "task_id": "finance-03",
+      "split": "train"
+    },
+    {
+      "task_id": "math-00",
+      "split": "train"
+    },
+    {
+      "task_id": "math-01",
+      "split": "train"
+    },
+    {
+      "task_id": "math-02",
+      "split": "train"
+    },
+    {
+      "task_id": "math-03",
+      "split": "train"
+    },
+    {
+      "task_id": "media-00",
+      "split": "train"
+    },
+    {
+      "task_id": "media-01",
+      "split": "train"
+    },
+    {
+      "task_id": "media-02",
+      "split": "train"
+    },
+    {
+      "task_id": "media-03",
+      "split": "train"
+    },
+    {
+      "task_id": "science-00",
+      "split": "train"
+    },
+    {
+      "task_id": "science-01",
+      "split": "train"
+    },
+    {
+      "task_id": "science-02",
+      "split": "train"
+    },
+    {
+      "task_id": "science-03",
+      "split": "train"
+    },
+    {
+      "task_id": "security-00",
+      "split": "train"
+    },
+    {
+      "task_id": "security-01",
+      "split": "train"
+    },
+    {
+      "task_id": "security-02",
+      "split": "train"
+    },
+    {
+      "task_id": "security-03",
+      "split": "train"
+    }
+  ],
+  "example_actions": [
+    {
+      "answer": "unanswered"
+    }
+  ],
+  "finish_action": {
+    "answer": "unanswered"
+  },
+  "dataset": "masapasa/five-desks",
+  "source": "https://github.com/masapasa/five-desks"
+}
